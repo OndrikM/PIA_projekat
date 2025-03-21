@@ -1,0 +1,61 @@
+<app-header></app-header>
+<br/>
+<div class="container">
+    <button (click)="back()"type="button" class="btn btn-outline-secondary">Vrati se na pocetnu</button>
+</div>
+<br/>
+<div class="container">
+  <div class="row">
+    <div class="col-md-12 offset-md-0">
+      <div class="card">
+        <div class="card-header">
+          <h3>Registracija</h3>
+        </div>
+        <div class="card-body">
+          <form>
+            <div class="form-group">
+              <label for="image">Izaberite sliku</label>
+              <input type="file" accept="'image/png','image/jpeg'" class="form-control-file" id="image" required (change)="uploadImage($event)">
+            </div>
+            <div class="form-group">
+              <label for="username">Korisnicko ime</label>
+              <input type="text" class="form-control" id="username" required [(ngModel)]="username" name="username">
+            </div>
+            <div class="form-group">
+              <label for="password">Lozinka</label>
+              <input type="password" class="form-control" id="password" required [(ngModel)]="password" name="password">
+            </div>
+            <div class="form-group">
+              <label for="passwordConfirm">Potvrdite lozinku</label>
+              <input type="password" class="form-control" id="passwordConfirm" required [(ngModel)]="passwordConfirm" name="passwordConfirm">
+            </div>
+            <div class="form-group">
+              <label for="name">Ime</label>
+              <input type="text" class="form-control" id="name" required [(ngModel)]="name" name="name">
+            </div>
+            <div class="form-group">
+              <label for="surname">Prezime</label>
+              <input type="text" class="form-control" id="surname" required [(ngModel)]="surname" name="surname">
+            </div>
+            <div class="form-group">
+              <label for="adress">Adresa</label>
+              <input type="text" class="form-control" id="adress" required [(ngModel)]="adress" name="adress">
+            </div>
+            <div class="form-group">
+              <label for="telephone">Kontakt telefon</label>
+              <input type="text" class="form-control" id="telephone" required [(ngModel)]="telephone" name="telephone">
+            </div>
+            <div class="form-group">
+              <label for="email">Email</label>
+              <input type="text" class="form-control" id="email" required [(ngModel)]="email" name="email">
+            </div>
+            <button class="btn btn-success btn-lg btn-block" (click)="register()">Registruj se</button>
+            <button class="btn btn-secondary btn-lg btn-block" (click)="loginRedirect()">Vec imate nalog? Login</button>
+        </form>
+        </div>
+      </div>
+    </div>
+  </div>
+
+
+

@@ -1,0 +1,88 @@
+<nav class="navbar navbar-expand-lg navbar-light bg-light fixed-top">
+  <div class="container">
+    <h2>GreenMedic</h2>
+    <a routerLink="login">Login</a>
+  </div>
+</nav>
+
+<header>
+  <div id="carouselExampleCaptions" class="carousel slide" data-bs-ride="carousel">
+    <div class="carousel-indicators">
+      <button type="button" data-bs-target="#carouselExampleCaptions" data-bs-slide-to="0" class="active" aria-current="true" aria-label="Slide 1"></button>
+      <button type="button" data-bs-target="#carouselExampleCaptions" data-bs-slide-to="1" aria-label="Slide 2"></button>
+      <button type="button" data-bs-target="#carouselExampleCaptions" data-bs-slide-to="2" aria-label="Slide 3"></button>
+      <button type="button" data-bs-target="#carouselExampleCaptions" data-bs-slide-to="3" aria-label="Slide 4"></button>
+      <button type="button" data-bs-target="#carouselExampleCaptions" data-bs-slide-to="4" aria-label="Slide 5"></button>
+    </div>
+    <div class="carousel-inner">
+      <div class="carousel-item active" style="background-image: url('assets/imgs/ordinacija1.jpg')">
+        <div class="carousel-caption">
+          <h2>GreenMedic</h2>
+          <p>Kod nas ste uvek na prvom mestu</p>
+        </div>
+      </div>
+      <div class="carousel-item" style="background-image: url('assets/imgs/ordinacija2.jpg')">
+        <div class="carousel-caption">
+          <h3>Najveca mreža ustanova u Srbiji</h3>
+        </div>
+      </div>
+      <div class="carousel-item" style="background-image: url('assets/imgs/ordinacija3.jpg')">
+        <div class="carousel-caption">
+          <h3>Brinemo o Vašim najvoljenijima</h3>
+        </div>
+      </div>
+      <div class="carousel-item" style="background-image: url('assets/imgs/ordinacija4.jpg')">
+        <div class="carousel-caption">
+          <h3>Najbolji tim lekara koji medicina može da pruži</h3>
+        </div>
+      </div>
+      <div class="carousel-item active" style="background-image: url('assets/imgs/ordinacija5.jpg')">
+        <div class="carousel-caption">
+          <h3>Pružamo najbolju moguću negu</h3>
+        </div>
+      </div>
+    </div>
+    <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleCaptions" data-bs-slide="prev">
+      <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+      <span class="visually-hidden">Previous</span>
+    </button>
+    <button class="carousel-control-next" type="button" data-bs-target="#carouselExampleCaptions" data-bs-slide="next">
+      <span class="carousel-control-next-icon" aria-hidden="true"></span>
+      <span class="visually-hidden">Next</span>
+    </button>
+  </div>
+</header>
+<br/>
+
+<div class="container">
+  <div class="row">
+  <div class="col"><input class="form-control" type="text" [(ngModel)]="searchIme" placeholder="Pretraga ime"></div>
+  <div class="col"> <input class="form-control" type="text" [(ngModel)]="searchPrezime" placeholder="Pretraga prezime"></div>
+  <div class="col"><input class="form-control" type="text" [(ngModel)]="searchSpec" placeholder="Pretraga specijalizacija"></div>
+  </div>
+  <br/>
+  <div class="row">
+  <div class="col"><button class="btn btn-success" style="width:100%" (click)="search()">Pretraga</button></div>
+  <div class="col"><button class="btn btn-success" style="width:100%" (click)="reset()">Ponisti pretragu</button></div>
+  </div>
+  <br/>
+  <table class="table tbl">
+    <thead>
+      <tr>
+          <th scope="col">Profilna slika</th>
+          <th scope="col" [appSort]="doctors" data-order="desc" data-name="ime">Ime</th>
+          <th scope="col" [appSort]="doctors" data-order="desc" data-name="prezime">Prezime</th>
+          <th scope="col" [appSort]="doctors" data-order="desc" data-name="specijalizacija">Specijalizacija</th>
+      </tr>
+    </thead>
+      <tr *ngFor="let d of doctors">
+          <td>
+            <img src="http://localhost:4000/public/{{d.slika}}" alt="Profilna slika" width="100" height="100">
+          </td>
+          <td>{{d.ime}}</td>
+          <td>{{d.prezime}}</td>
+          <td>{{d.specijalizacija}}</td>
+      </tr>  
+  </table> 
+</div>
+

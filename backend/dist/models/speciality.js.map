@@ -1,0 +1,1 @@
+{"version":3,"file":"speciality.js","sourceRoot":"","sources":["../../src/models/speciality.ts"],"names":[],"mappings":";;;;;AAAA,wDAA+B;AAE/B,MAAM,MAAM,GAAG,kBAAQ,CAAC,MAAM,CAAC;AAE/B,IAAI,UAAU,GAAE,IAAI,MAAM,CAAC;IACvB,KAAK,EAAE;QACH,IAAI,EAAE,MAAM;KACf;IACD,QAAQ,EAAE;QACN,IAAI,EAAE,KAAK;KACd;CACJ,CAAC,CAAA;AAEF,kBAAe,kBAAQ,CAAC,KAAK,CAAC,YAAY,EAAE,UAAU,EAAE,iBAAiB,CAAC,CAAC"}

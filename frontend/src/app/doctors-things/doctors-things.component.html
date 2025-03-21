@@ -1,0 +1,71 @@
+<nav class="navbar navbar-expand-lg navbar-light bg-light fixed-top">
+    <div class="container">
+      <div class="navbar-brand"><h2 style="color:green">GreenMedic</h2></div>
+      <div class="navbar-brand">dr {{doctor.ime}} {{doctor.prezime}}</div>
+      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+      <div class="collapse navbar-collapse" id="navbarResponsive">
+        <ul class="navbar-nav ms-auto">
+          <li class="nav-item ">
+            <a class="nav-link"  routerLink="/doctorForm">Profil</a>
+          </li>
+          <li class="nav-item ">
+            <a class="nav-link"  routerLink="/doctorCheck">Pregledi</a>
+          </li>
+          <li class="nav-item active">
+            <a class="nav-link" routerLink="/doctorThing">Razno</a>
+          </li>
+          <li class="nav-item">
+            <button class="btn btn-outline-dark" (click)="logout()">Odjavi se</button>
+          </li>
+        </ul>
+      </div>
+    </div>
+  </nav>
+<br/><br/><br/><br/>
+<div class="container text-center" style="width:60%">
+  <div class="card" style="width: auto">
+    <div class="card-header">
+      Godisnji odmor i slobodni dani
+    </div>
+  
+  <ul class="list-group list-group-flush">
+    <li class="list-group-item">Pocetak godisnjeg: <input name="begin" [(ngModel)]="beginR" type="text" placeholder="yyyy-mm-dd"></li>
+    <li class="list-group-item">Kraj godisnjeg: <input name="end" [(ngModel)]="endR" type="text" placeholder="yyyy-mm-dd"></li>
+    <li class="list-group-item"><button class="btn btn-success btn-lg" (click)="setHoliday()">Postavi</button></li>
+    <li class="list-group-item"><hr/></li>
+    <li class="list-group-item">Slobodan dan: <input name="freed" [(ngModel)]="freeDay" type="text" placeholder="yyyy-mm-dd"></li>
+    <li class="list-group-item"><button class="btn btn-success btn-lg" (click)="setDayOff()">Postavi</button></li>
+  </ul>
+  </div>
+</div>
+
+<br/>
+
+<div class="container text-center" style="width:60%" *ngIf="freeDays">
+  <div class="card" style="width: auto">
+    <div class="card-header">
+      Datumi slobodnih dana
+    </div>
+    <ul class="list-group list-group-flush">
+      <li class="list-group-item" *ngFor="let day of freeDays">{{day.tip}} {{day.datum}}</li>
+    </ul>
+  </div>
+</div>
+
+<br/>
+
+<div class="container text-center" style="width:60%">
+  <div class="card" style="width: auto">
+    <div class="card-header">
+      Nova vrsta pregleda
+    </div>
+    <ul class="list-group list-group-flush">
+      <li class="list-group-item">Naziv nove vrste pregleda:
+        <input type="text" class="form-control" [(ngModel)]="selectedExam" name="selectE">
+      </li>
+    <li class="list-group-item"><button class="btn btn-success btn-lg" (click)="newExamReq()">Posalji zahtev</button></li>
+    </ul>
+  </div>
+</div>

@@ -1,0 +1,71 @@
+<nav class="navbar navbar-expand-lg navbar-light bg-light fixed-top">
+    <div class="container">
+      <div class="navbar-brand"><h2 style="color:green">GreenMedic</h2></div>
+      <div class="navbar-brand">{{patient.ime}} {{patient.prezime}}</div>
+      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+      <div class="collapse navbar-collapse" id="navbarResponsive">
+        <ul class="navbar-nav ms-auto">
+          <li class="nav-item">
+            <a class="nav-link"  routerLink="/patientForm">Profil</a>
+          </li>
+          <li class="nav-item active">
+            <a class="nav-link"  routerLink="/patientDoctor">Lekari</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link"  routerLink="/patientCheck">Pregledi</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" routerLink="/patientNotification">Obavestenja</a>
+          </li>
+          <li class="nav-item">
+            <button class="btn btn-outline-dark" (click)="logout()">Odjavi se</button>
+          </li>
+        </ul>
+      </div>
+    </div>
+  </nav>
+<br/><br/><br/><br/>
+
+<div class="container text-center" style="width:80%">
+  <div class="row">
+    <div class="col"><input type="text" [(ngModel)]="searchIme" placeholder="Pretraga ime"></div>
+    <div class="col"><input type="text" [(ngModel)]="searchPrezime" placeholder="Pretraga prezime"></div>
+    <div class="col"><input type="text" [(ngModel)]="searchSpec" placeholder="Pretraga specijalizacija"></div>
+    <div class="col"><input type="text" [(ngModel)]="searchOgranak" placeholder="Pretraga ogranak"></div>
+  </div>
+  <br/>
+  <div class="row">
+    <div class="col"><button class="btn btn-success" style="width:100%" (click)="search()">Pretraga</button></div>
+    <div class="col"><button class="btn btn-success" style="width:100%" (click)="reset()">Ponisti pretragu</button></div>
+  </div>
+  <br/>
+</div>
+
+<div class="container text-center" style="width:70%">
+  <div class="card">
+   <table class = "table tbl">
+      <thead>
+       <tr>
+          <th scope="col">Profilna slika</th>
+          <th scope="col" [appSort]="doctors" data-order="desc" data-name="ime">Ime</th>
+          <th scope="col" [appSort]="doctors" data-order="desc" data-name="prezime">Prezime</th>
+          <th scope="col" [appSort]="doctors" data-order="desc" data-name="specijalizacija">Specijalizacija</th>
+          <th scope="col" [appSort]="doctors" data-order="desc" data-name="ogranak">Ogranak</th>
+       </tr>
+      </thead>
+      <tr *ngFor="let d of doctors" (click)="selectDoctor(d)">
+          <td>
+            <img src="{{location}}{{d.slika}}" alt="Profilna slika" width="100" height="100">
+          </td>
+          <td>{{d.ime}}</td>
+          <td>{{d.prezime}}</td>
+          <td>{{d.specijalizacija}}</td>
+          <td>{{d.ogranak}}</td>
+    </tr> 
+   </table>
+  </div>
+</div>
+
+

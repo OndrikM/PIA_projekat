@@ -1,0 +1,171 @@
+<nav class="navbar navbar-expand-lg navbar-light bg-light fixed-top">
+    <div class="container">
+      <div class="navbar-brand"><h2 style="color:green">GreenMedic</h2></div>
+      <div class="navbar-brand">menadzer {{manager.ime}} {{manager.prezime}}</div>
+      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+      <div class="collapse navbar-collapse" id="navbarResponsive">
+        <ul class="navbar-nav ms-auto">
+          <li class="nav-item">
+            <a class="nav-link"  routerLink="/managerUsers">Pacijenti</a>
+          </li>
+          <li class="nav-item active">
+            <a class="nav-link"  routerLink="/managerDoctors">Lekari</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" routerLink="/managerOffice">Ordinacija</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" routerLink="/managerProfile">Moj profil</a>
+          </li>
+          <li class="nav-item">
+            <button class="btn btn-outline-dark" (click)="logout()">Odjavi se</button>
+          </li>
+        </ul>
+      </div>
+    </div>
+  </nav>
+<br/><br/><br/><br/>
+
+<div class="container text-center" style="width:100%">
+  <div class="card" style="width: auto">
+    <div class="card-header">
+      Lekari
+    </div>
+    <form>
+      <table class="table tbl">
+        <thead>
+        <tr>
+          <th>Profilna slika</th>
+          <th>Korisnicko ime</th>
+          <th>Lekar</th>
+          <th>Lozinka</th>
+          <th>Adresa</th>
+          <th>Telefon</th>
+          <th>Imejl</th>
+          <th>Broj licence</th>
+          <th>Specijalizacija</th>
+          <th>Ogranak</th>
+          <th></th>
+        </tr>
+        </thead>
+        <tr *ngFor="let d of doctors">
+          <td>
+            <img src="http://localhost:4000/public/{{d.slika}}" alt="Profilna slika" width="100" height="100">
+          </td>
+          <td (click)="selectDoctor(d)">{{d.korIme}}</td>
+          <td (click)="selectDoctor(d)">{{d.ime}} {{d.prezime}}</td>
+          <td (click)="selectDoctor(d)">{{d.lozinka}}</td>
+          <td (click)="selectDoctor(d)">{{d.adresa}}</td>
+          <td (click)="selectDoctor(d)">{{d.kontaktTel}}</td>
+          <td (click)="selectDoctor(d)">{{d.imejl}}</td>
+          <td (click)="selectDoctor(d)">{{d.brLicence}}</td>
+          <td (click)="selectDoctor(d)">{{d.specijalizacija}}</td>
+          <td (click)="selectDoctor(d)">{{d.ogranak}}</td>
+          <td><button (click)="deleteDoctor(d)" type="button" class="btn btn-danger btn-sm">Obrisi</button> </td>
+        </tr>
+        </table>  
+     </form>
+  </div>
+</div>
+
+<div class="container text-center" style="width:60%" *ngIf="updateForm">
+  <br/>
+  <div class="card" style="width: auto;">
+    <div class="card-header">
+      Azuriranje podataka: {{selectedDoctor.ime}} {{selectedDoctor.prezime}}
+    </div>
+    <div class="card-body">
+      <form>
+        <ul class="list-group list-group-flush">
+          <li class="list-group-item">
+            <img src="http://localhost:4000/public/{{selectedDoctor.slika}}"  style="width:200px; height:200px;border: 5px solid #777;" >
+          </li>
+          <li class="list-group-item">Nova slika: <input type="file" class="form-control" id="image" required (change)="uploadImage($event)"></li>
+          <li class="list-group-item">Novo korisnicko ime:  <input name="info" [(ngModel)]="newUsername" type="text" placeholder="{{selectedDoctor.korIme}}"></li>
+          <li class="list-group-item">Ime: {{selectedDoctor.ime}}</li>
+          <li class="list-group-item">Prezime: {{selectedDoctor.prezime}}</li>
+          <li class="list-group-item">Nova adresa: <input name="info" [(ngModel)]="newAdress" type="text" placeholder=" {{selectedDoctor.adresa}}"></li>
+          <li class="list-group-item">Novi kontakt telefon:<input name="info" [(ngModel)]="newTelephone" type="text" placeholder="{{selectedDoctor.kontaktTel}}"></li>
+          <li class="list-group-item">Email:{{selectedDoctor.imejl}}</li>
+          <li class="list-group-item">Broj licence:<input name="info" [(ngModel)]="newLicense" type="text" placeholder="{{selectedDoctor.brLicence}}"></li>
+          <li class="list-group-item">Specijalizacija: <input name="info" [(ngModel)]="newSpeciality" type="text" placeholder=" {{selectedDoctor.specijalizacija}}"></li>
+          <li class="list-group-item">Ogranak: {{selectedDoctor.ogranak}}</li>
+        </ul>
+        <div class="card-body">
+          <button  (click)="cancelSelectedDoctor()" class="btn btn-secondary">Odustani</button>
+          &nbsp;<button (click)="changeDoctor()"  class="btn btn-success">Promeni podatke</button>
+        </div>
+      </form>
+    </div>
+  </div>
+</div>
+
+<br/>
+
+<div class="container text-center" *ngIf="!newDoctorForm">
+  <button class="btn btn-success btn-lg" (click)="newDoctorForm=true">+Novi lekar</button>
+</div>
+
+<br/>
+
+<div class="container text-center" style="width:70%" *ngIf="newDoctorForm">
+      <div class="card">
+        <div class="card-header">
+          Novi lekar
+        </div>
+        <div class="card-body">
+          <form>
+            <div class="form-group">
+              <label for="image">Slika</label>
+              <input type="file" class="form-control" id="image" required (change)="uploadImage($event)">
+            </div>
+            <div class="form-group">
+              <label for="username">Korisnicko ime</label>
+              <input type="text" class="form-control" id="username" required [(ngModel)]="username" name="username">
+            </div>
+            <div class="form-group">
+              <label for="password">Lozinka</label>
+              <input type="text" class="form-control" id="password" required [(ngModel)]="password" name="password">
+            </div>
+            <div class="form-group">
+              <label for="name">Ime</label>
+              <input type="text" class="form-control" id="name" required [(ngModel)]="name" name="name">
+            </div>
+            <div class="form-group">
+              <label for="surname">Prezime</label>
+              <input type="text" class="form-control" id="surname" required [(ngModel)]="surname" name="surname">
+            </div>
+            <div class="form-group">
+              <label for="adress">Adresa</label>
+              <input type="text" class="form-control" id="adress" required [(ngModel)]="adress" name="adress">
+            </div>
+            <div class="form-group">
+              <label for="telephone">Kontakt telefon</label>
+              <input type="text" class="form-control" id="telephone" required [(ngModel)]="phone" name="telephone">
+            </div>
+            <div class="form-group">
+              <label for="email">Email</label>
+              <input type="text" class="form-control" id="email" required [(ngModel)]="email" name="email">
+            </div>
+            <div class="form-group">
+              <label for="license">Broj licence</label>
+              <input type="text" class="form-control" id="license" required [(ngModel)]="license" name="l">
+            </div>
+            <div class="form-group">
+              <label for="spec">Specijalizacija</label>
+              <input type="text" class="form-control" id="spec" required [(ngModel)]="spec" name="s">
+            </div>
+            <div class="form-group">
+              <label for="location">Ogranak</label>
+              <input type="text" class="form-control" id="location" required [(ngModel)]="location" name="loc">
+            </div>
+            <button type="button" class="btn btn-secondary btn-lg" (click)="newDoctorForm=false">Odustani</button>
+            &nbsp;<button class="btn btn-success btn-lg" (click)="newDoctor()">Unesi novog lekara</button>
+        </form>
+  </div>
+</div>
+
+
+

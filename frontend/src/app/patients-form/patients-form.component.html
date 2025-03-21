@@ -1,0 +1,61 @@
+<nav class="navbar navbar-expand-lg navbar-light bg-light fixed-top">
+    <div class="container">
+      <div class="navbar-brand"><h2 style="color:green">GreenMedic</h2></div>
+      <div class="navbar-brand">{{patient.ime}} {{patient.prezime}}</div>
+      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+      <div class="collapse navbar-collapse" id="navbarResponsive">
+        <ul class="navbar-nav ms-auto">
+          <li class="nav-item active">
+            <a class="nav-link"  routerLink="/patientForm">Profil</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link"  routerLink="/patientDoctor">Lekari</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" routerLink="/patientCheck">Pregledi</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" routerLink="/patientNotification">Obavestenja</a>
+          </li>
+          <li class="nav-item">
+            <button class="btn btn-outline-dark" (click)="logout()">Odjavi se</button>
+          </li>
+        </ul>
+      </div>
+    </div>
+  </nav>
+
+<br/><br/><br/><br/>
+
+<div class="container text-center" style="width:60%">
+  <div class="card" style="width: auto;">
+    <div class="card-header">
+      Podaci o korisniku 
+    </div>
+    <form>
+      <ul class="list-group list-group-flush">
+        <li class="list-group-item">
+          <img src="{{pictureLocation}}"  style="width:200px; height:200px;border: 5px solid #777;" >
+        </li>
+        <li class="list-group-item">Izaberite novu sliku: <input type="file" class="form-control-file" id="image" required (change)="uploadImage($event)"></li>
+        <li class="list-group-item">Korisnicko ime: {{patient.korIme}} <input name="info" [(ngModel)]="newUsername" type="text" placeholder="Novo korisnicko ime"></li>
+        <li class="list-group-item">Ime: {{patient.ime}}</li>
+        <li class="list-group-item">Prezime: {{patient.prezime}}</li>
+        <li class="list-group-item">Adresa: {{patient.adresa}} <input name="info" [(ngModel)]="newAdress" type="text" placeholder="Nova adresa"></li>
+        <li class="list-group-item">Kontakt telefon: {{patient.kontaktTel}} <input name="info" [(ngModel)]="newTelephone" type="text" placeholder="Novi kontakt telefon"></li>
+        <li class="list-group-item">Email: {{patient.imejl}} <input name="info" [(ngModel)]="newEmail" type="text" placeholder="Novi email"></li>
+        <li class="list-group-item">Stara lozinka:  <input type="password" [(ngModel)]="oldPassword" name="password" placeholder="Unesite lozinku"></li>
+        <li class="list-group-item">Nova lozinka: <input  name="password" [(ngModel)]="newPassword" type="password" placeholder="Unesite novu lozinku"></li>
+        <li class="list-group-item">Potvrda nove lozinke: <input name="password" [(ngModel)]="confirmPassword" type="password" placeholder="Potvrdite novu lozinku"></li>
+        <li class="list-group-item">
+          <button  (click)="updateInfo()" class="btn btn-secondary">Sacuvaj izmene</button>
+          &nbsp;<button (click)="changePassword()" class="btn btn-success">Promeni lozinku</button>  
+        </li>
+      </ul>
+    </form>
+  </div>
+</div>
+
+

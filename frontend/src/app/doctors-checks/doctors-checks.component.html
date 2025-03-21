@@ -1,0 +1,156 @@
+<nav class="navbar navbar-expand-lg navbar-light bg-light fixed-top">
+    <div class="container">
+      <div class="navbar-brand"><h2 style="color:green">GreenMedic</h2></div>
+      <div class="navbar-brand">dr {{doctor.ime}} {{doctor.prezime}}</div>
+      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+      <div class="collapse navbar-collapse" id="navbarResponsive">
+        <ul class="navbar-nav ms-auto">
+          <li class="nav-item ">
+            <a class="nav-link"  routerLink="/doctorForm">Profil</a>
+          </li>
+          <li class="nav-item active">
+            <a class="nav-link"  routerLink="/doctorCheck">Pregledi</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" routerLink="/doctorThing">Razno</a>
+          </li>
+          <li class="nav-item">
+            <button class="btn btn-outline-dark" (click)="logout()">Odjavi se</button>
+          </li>
+        </ul>
+      </div>
+    </div>
+  </nav>
+<br/><br/><br/><br/>
+
+<div class="container text-center" style="width:60%" *ngIf="checks">
+  <div class="card" style="width: auto">
+    <div class="card-header">
+      Pregledi (naredna tri pregleda)
+    </div>
+    <form>
+      <table class="table tbl">
+        <thead>
+        <tr>
+          <th>Naziv pregleda</th>
+          <th>Pacijent</th>
+          <th>Datum</th>
+          <th>Vreme</th>
+          <th></th>
+        </tr>
+        </thead>
+        <tr *ngFor="let app of appointments| slice:0:3;let i=index" (click)="patientsCard(app,i)">
+          <td>{{app.tip}}</td>
+          <td>{{patients[i].ime}} {{patients[i].prezime}}</td>
+          <td>{{app.datum}}</td>
+          <td>{{app.vreme}}</td>
+          <td><button (click)="cancel(app)" type="button" class="btn btn-secondary btn-sm">Otkazi pregled</button> </td>
+        </tr>
+      </table>  
+    </form>
+  </div>
+</div>
+
+<br/>
+
+<div class="container text-center" style="width:60%" *ngIf="!checks">
+  <div class="card" style="width: auto">
+    <div class="card-header">
+      Otkazi pregled
+    </div>
+    <form>
+        <textarea name="reason"[(ngModel)]="reason" class="form-control" placeholder="Razlog otkazivanja" rows="3"></textarea>
+        <br/>
+        <button (click)="cancelConfirm()" type="button" class="btn btn-success btn-lg">Otkazi</button> 
+        <br/><br/>
+    </form>
+  </div>
+</div>
+
+
+<div class="container text-center" style="width:95%" *ngIf="patientChecked">
+  <div class="card" style="width: auto;">
+    <div class="card-header">
+      <div class="row">
+        <div class="col-md-4 offset-md-4">
+          Zdravstveni karton:<br/>
+          {{selectedPatient.ime}} {{selectedPatient.prezime}}
+        </div>
+        <div class="col-md-3 offset-md-1">
+          <button (click)="close()" type="button" class="btn btn-outline-dark">Zatvori</button>
+        </div>
+      </div>
+    </div>
+    <form>
+        <table class="table tbl">
+          <thead>
+          <tr>
+            <th>Naziv pregleda</th>
+            <th>Datum</th>
+            <th>Vreme</th>
+            <th>Lekar</th>
+            <th>Ogranak</th>
+            <th></th>
+          </tr>
+          </thead>
+          <tr *ngFor="let app of selectedPatientsAppointments;let i=index" (click)=appToRep(app,i) [ngStyle]="{'background-color': appCheck(app)}">
+            <td>{{app.tip}}</td>
+            <td>{{app.datum}}</td>
+            <td>{{app.vreme}}</td>
+            <td>{{doctorsApp[i].ime}} {{doctorsApp[i].prezime}}</td>
+            <td>{{doctorsApp[i].ogranak}}</td>
+          </tr>
+        </table>
+   
+        <br/>
+ 
+        <table class="table tbl">
+          <thead>
+          <tr>
+            <th>Lekar</th>
+            <th>Specijalizacija</th>
+            <th>Datum</th>
+            <th>Vreme</th>
+            <th>Razlog</th>
+            <th>Dijagnoza</th>
+            <th>Terapija</th>
+            <th>Kontrola</th>
+          </tr>
+          </thead>
+          <tr *ngFor="let rep of selectedPatientsReports;let i=index">
+            <td>{{doctorsRep[i].ime}} {{doctorsRep[i].prezime}}</td>
+            <td>{{rep.specijalizacija}}</td>
+            <td>{{rep.datum}}</td>
+            <td>{{rep.vreme}}</td>
+            <td>{{rep.razlog}}</td>
+            <td>{{rep.dijagnoza}}</td>
+            <td>{{rep.terapija}}</td>
+            <td>{{rep.kontrola}}</td>
+          </tr>
+        </table>  
+    </form>
+<hr>
+    <div class="form-group">
+      <label for="reason"><b>Razlog</b></label>
+      <textarea class="form-control" id="reason" required [(ngModel)]="coming" name="r"></textarea>
+    </div>
+    <div class="form-group">
+      <label for="diagnosis"><b>Dijagnoza</b></label>
+      <textarea class="form-control" id="diagnosis" required [(ngModel)]="diagnosis" name="d"></textarea>
+    </div>
+    <div class="form-group">
+      <label for="therapy"><b>Terapija</b></label>
+      <textarea class="form-control" id="therapy" required [(ngModel)]="therapy" name="t"></textarea>
+    </div>
+    <div class="form-group">
+      <label for="control"><b>Kontrola</b></label>
+      <input type="text" name="c" id="control" [(ngModel)]="control" placeholder="yyyy-mm-dd" class="form-control">
+  </div>
+  <div class="form-group">
+    <button (click)="save()" type="button" class="btn btn-success btn-lg">Unesi</button>
+  </div>
+</div>
+
+

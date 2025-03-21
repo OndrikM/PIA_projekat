@@ -1,0 +1,121 @@
+<nav class="navbar navbar-expand-lg navbar-light bg-light fixed-top">
+    <div class="container">
+      <div class="navbar-brand"><h2 style="color:green;">GreenMedic</h2></div>
+      <div class="navbar-brand">{{patient.ime}} {{patient.prezime}}</div>
+      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+      <div class="collapse navbar-collapse" id="navbarResponsive">
+        <ul class="navbar-nav ms-auto">
+          <li class="nav-item">
+            <a class="nav-link"  routerLink="/patientForm">Profil</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link"  routerLink="/patientDoctor">Lekari</a>
+          </li>
+          <li class="nav-item active">
+            <a class="nav-link"  routerLink="/patientCheck">Pregledi</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" routerLink="/patientNotification">Obavestenja</a>
+          </li>
+          <li class="nav-item">
+            <button class="btn btn-outline-dark" (click)="logout()">Odjavi se</button>
+          </li>
+        </ul>
+      </div>
+    </div>
+  </nav>
+<br/><br/><br/><br/>
+
+<div class="container text-center" style="width:90%">
+  <div class="card" style="width:auto">
+    <div class="card-header">
+      Pregledi
+    </div>
+    <form>
+      <table class="table tbl">
+        <thead>
+        <tr>
+          <th>Naziv pregleda</th>
+          <th>Datum</th>
+          <th>Vreme</th>
+          <th>Lekar</th>
+          <th>Ogranak</th>
+          <th></th>
+        </tr>
+        </thead>
+        <tr *ngFor="let app of appointments;let i=index">
+          <td>{{app.tip}}</td>
+          <td>{{app.datum}}</td>
+          <td>{{app.vreme}}</td>
+          <td>{{doctors[i].ime}} {{doctors[i].prezime}}</td>
+          <td>{{doctors[i].ogranak}}</td>
+          <td><button (click)="cancel(app)" type="button" class="btn btn-secondary btn-sm">Otkazi pregled</button> </td>
+       </tr>
+      </table>  
+    </form>
+  </div>
+</div>
+
+<br/>
+
+<div class="container text-center" style="width:90%">
+  <div class="card" style="width:auto">
+    <div class="card-header">
+      Izvestaji
+    </div>
+    <form>
+      <table class="table tbl">
+      <thead>
+      <tr>
+        <th>Lekar</th>
+        <th>Specijalizacija</th>
+        <th>Datum</th>
+        <th>Vreme</th>
+        <th>Razlog</th>
+        <th>Dijagnoza</th>
+        <th>Terapija</th>
+        <th>Kontrola</th>
+        <th>PDF</th>
+       </tr>
+       </thead>
+       <tr *ngFor="let rep of reports;let i=index">
+        <td>{{doctorsRep[i].ime}} {{doctorsRep[i].prezime}}</td>
+        <td>{{rep.specijalizacija}}</td>
+        <td>{{rep.datum}}</td>
+        <td>{{rep.vreme}}</td>
+        <td>{{rep.razlog}}</td>
+        <td>{{rep.dijagnoza}}</td>
+        <td>{{rep.terapija}}</td>
+        <td>{{rep.kontrola}}</td>
+        <td><button (click)="generatePdf(rep,doctorsRep[i])" type="button" data-toggle="modal" data-target="#exampleModal" class="btn btn-secondary btn-sm">PDF</button> </td>
+       </tr>
+      </table>  
+    </form>
+  </div>
+</div>
+
+<div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <form>
+        <div class="modal-header">
+          <h5 class="modal-title" id="exampleModalLabel">Izvestaj</h5>
+          <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+            <span aria-hidden="true">&times;</span>
+          </button>
+        </div>
+        <div class="modal-body">
+          <div class="container text-center">
+           Izvestaj mozete preuzeti na sledecoj adresi:
+           <ngx-qrcode [elementType]="elementType" [errorCorrectionLevel]="correctionLevel" [value]="value" cssClass="bshadow"></ngx-qrcode>
+          </div>
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-secondary" data-dismiss="modal">Zatvori</button>
+        </div>
+      </form>
+    </div>
+  </div>
+</div>

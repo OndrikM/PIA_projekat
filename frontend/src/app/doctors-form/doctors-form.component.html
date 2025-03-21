@@ -1,0 +1,105 @@
+<nav class="navbar navbar-expand-lg navbar-light bg-light fixed-top">
+    <div class="container">
+      <div class="navbar-brand"><h2 style="color:green">GreenMedic</h2></div>
+      <div class="navbar-brand">dr {{doctor.ime}} {{doctor.prezime}}</div>
+      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+      <div class="collapse navbar-collapse" id="navbarResponsive">
+        <ul class="navbar-nav ms-auto">
+          <li class="nav-item active">
+            <a class="nav-link"  routerLink="/doctorForm">Profil</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link"  routerLink="/doctorCheck">Pregledi</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" routerLink="/doctorThing">Razno</a>
+          </li>
+          <li class="nav-item">
+            <button class="btn btn-outline-dark" (click)="logout()">Odjavi se</button>
+          </li>
+        </ul>
+      </div>
+    </div>
+  </nav>
+<br/><br/><br/><br/>
+
+<div class="container text-center" style="width:60%">
+  <div class="card" style="width: auto;">
+    <div class="card-header">
+      Podaci o korisniku
+    </div>
+    <form>
+    <div class="card-body">
+      <ul class="list-group list-group-flush">
+        <li class="list-group-item">
+          <img src="{{pictureLocation}}"  style="width:200px; height:200px;border: 5px solid #777;" >
+        </li>
+        <li class="list-group-item">Izaberite novu sliku: <input type="file" class="form-control" id="image" required (change)="uploadImage($event)"></li>
+        <li class="list-group-item">Korisnicko ime: {{doctor.korIme}} <input name="info" [(ngModel)]="newUsername" type="text" placeholder="Novo korisnicko ime"></li>
+        <li class="list-group-item">Ime: {{doctor.ime}}</li>
+        <li class="list-group-item">Prezime: {{doctor.prezime}}</li>
+        <li class="list-group-item">Adresa: {{doctor.adresa}} <input name="info" [(ngModel)]="newAdress" type="text" placeholder="Nova adresa"></li>
+        <li class="list-group-item">Kontakt telefon: {{doctor.kontaktTel}} <input name="info" [(ngModel)]="newTelephone" type="text" placeholder="Novi kontakt telefon"></li>
+        <li class="list-group-item">Email: {{doctor.imejl}}</li>
+        <li class="list-group-item">Broj licence: {{doctor.brLicence}} <input name="info" [(ngModel)]="newLicense" type="text" placeholder="Nova licenca"></li>
+        <li class="list-group-item">Specijalizacija: {{doctor.specijalizacija}} <input name="info" [(ngModel)]="newSpeciality" type="text" placeholder="Nova specijalizacija"></li>
+        <li class="list-group-item">Ogranak: {{doctor.ogranak}}</li>
+        <li class="list-group-item">Stara lozinka:  <input type="password" [(ngModel)]="oldPassword" name="password" placeholder="Unesite lozinku"></li>
+        <li class="list-group-item">Nova lozinka: <input name="password" [(ngModel)]="newPassword" type="password" placeholder="Unesite novu lozinku"></li>
+        <li class="list-group-item">Potvrda nove lozinke: <input name="password" [(ngModel)]="confirmPassword" type="password" placeholder="Potvrdite novu lozinku"></li>
+        <li class="list-group-item">
+        <button  (click)="updateInfo()" class="btn btn-secondary">Sacuvaj izmene</button>
+        &nbsp;<button (click)="changePassword()"  class="btn btn-success">Promeni lozinku</button>
+        </li>
+      </ul>
+    </div>
+  </form>
+</div>
+
+<br/>
+
+<div class="container">
+  <div class="row">
+    <div class="col">
+
+<div class="container text-center" style="width:100%">
+  <div class="card">
+    <div class="card-header">
+      Podrzani pregledi
+     </div>
+     <div class="card-body">
+      <select class="form-select" size="3" [(ngModel)]="selectRemove">
+           <option *ngFor="let p of doctor.pregledi" (value)="p">{{p}}</option>
+         </select>
+       </div>
+    <div class="card-footer">
+      <button class="btn btn-success" (click)="removeCheck()">Ukloni pregled</button>
+    </div>
+  </div>
+</div>
+
+</div>
+
+<div class="col">
+
+<div class="container text-center" style="width:100%">
+  <div class="card" style="width:100%">
+    <div class="card-header">
+     Moguci novi pregledi {{doctor.specijalizacija}} specijalizacije
+    </div>
+    <div class="card-body">
+      <select class="form-select" size="3" [(ngModel)]="selectAdd">
+          <option *ngFor="let p of speciality.pregledi" (value)="p">{{p}}</option>
+        </select>
+      </div>
+    <div class="card-footer">
+      <button class="btn btn-success" (click)="addCheck()">Dodaj pregled</button>
+    </div>
+  </div>
+</div>
+
+    </div>
+  </div>
+</div> 

@@ -1,0 +1,172 @@
+<nav class="navbar navbar-expand-lg navbar-light bg-light fixed-top">
+  <div class="container">
+    <div class="navbar-brand"><h2 style="color:green">GreenMedic</h2></div>
+    <div class="navbar-brand">menadzer {{manager.ime}} {{manager.prezime}}</div>
+    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="collapse navbar-collapse" id="navbarResponsive">
+      <ul class="navbar-nav ms-auto">
+        <li class="nav-item ">
+          <a class="nav-link"  routerLink="/managerUsers">Pacijenti</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link"  routerLink="/managerDoctors">Lekari</a>
+        </li>
+        <li class="nav-item active">
+          <a class="nav-link" routerLink="/managerOffice">Ordinacija</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" routerLink="/managerProfile">Moj profil</a>
+        </li>
+        <li class="nav-item ">
+          <button class="btn btn-outline-dark" (click)="logout()">Odjavi se</button>
+        </li>
+        
+      </ul>
+    </div>
+  </div>
+</nav>
+<br/><br/><br/><br/>
+<div class="container text-center" style="width:60%" *ngIf="!showNewFields">
+<div class="card" style="width: auto">
+  <div class="card-header">
+    Zahtevi lekara za novim pregledima
+  </div>
+  <form>
+    <table class="table tbl">
+      <thead>
+      <tr>
+        <th>Lekar</th>
+        <th>Specijalizacija</th>
+        <th>Naziv pregleda</th>
+        <th></th>
+        <th></th>
+      </tr>
+      </thead>
+      <tr *ngFor="let r of requests;let i=index">
+        <td>{{reqDoctors[i].ime}} {{reqDoctors[i].prezime}}</td>
+        <td>{{reqDoctors[i].specijalizacija}}</td>
+        <td>{{r.zahtev}}</td>
+        <td><button (click)="accept(r,i)" class="btn btn-success btn-sm">Prihvati</button> </td>
+        <td><button  (click)="deny(r)" type="button" class="btn btn-danger btn-sm">Odbaci</button> </td>
+      </tr>
+    </table>  
+  </form>
+</div>
+</div>
+
+<div class="container text-center" style="width:40%" *ngIf="showNewFields">
+<div class="card" style="width: auto">
+  <div class="card-header">
+    Prihvati pregled: {{selectedReq.zahtev}}
+  </div>
+  <form>
+    <div class="card-body">
+      Trajanje novog pregleda:<input type="text" class="form-control" [(ngModel)]="newExamDuration" name="newExamDuration" placeholder="min"><br/>
+      Cena novog pregleda:<input type="text" class="form-control" [(ngModel)]="newExamPrice" name="newExamPrice" placeholder="rsd"><br/>
+      <button (click)="confirm()" type="button" class="btn btn-success btn-sm">Dodaj novi pregled</button>
+    </div>
+  </form>  
+</div>
+</div>
+
+<br/>
+
+<div class="container text-center" style="width:60%">
+<div class="card" style="width: auto">
+  <div class="card-header">
+    Specijalizacije i pregledi
+  </div>
+  <form>
+    <table class="table">
+      <thead>
+      <tr>
+        <th>Naziv</th>
+        <th>Pregledi</th>
+        <th></th>
+      </tr>
+      </thead>
+      <tr *ngFor="let s of specs;let i=index">
+        <td>{{s.vrsta}}</td>
+        <td>
+          <ul class="list-group">
+            <li class="list-group-item"  *ngFor="let p of s.pregledi">{{p}} <button (click)="selectExam(p)" data-toggle="modal" data-target="#exampleModal" class="btn btn-success btn-sm">Azuriraj</button>&nbsp;<button (click)="deleteExam(p,s)" class="btn btn-danger btn-sm">Obrisi</button></li>
+          </ul>
+        </td>
+        <td>
+          <form>
+            <div class="form-group">
+              <input type="text" class="form-control"  [(ngModel)]="newExam[i]" name="e" placeholder="Naziv novog pregleda"><br/>
+              <input type="text" class="form-control"  [(ngModel)]="duration[i]" name="d" placeholder="Trajanje novog pregleda"><br/>
+              <input type="text" class="form-control"  [(ngModel)]="price[i]" name="p" placeholder="Cena novog pregleda"><br/>
+              <button (click)="addExam(s,i)" type="button" class="btn btn-success btn-sm" placeholder="Naziv novog pregleda">Dodaj novi pregled</button>
+            </div>
+          </form>
+        </td>
+      </tr>
+    </table>  
+  </form>
+</div>
+</div>
+
+<div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+<div class="modal-dialog" role="document">
+  <div class="modal-content">
+    <form>
+      <div class="modal-header">
+        <h5 class="modal-title" id="exampleModalLabel">{{selectedExam.naziv}}</h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+        <ul class="list-group list-group-flush">
+          <li class="list-group-item">Nova cena: <input name="info" [(ngModel)]="newPrice" type="text" placeholder="{{selectedExam.cena}}"></li>
+          <li class="list-group-item">Novo trajanje pregleda: <input name="info" [(ngModel)]="newDuration" type="text" placeholder="{{selectedExam.trajanje}}"></li>
+        </ul>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+        <button type="button" class="btn btn-success" data-dismiss="modal" (click)="updateExam()">Sacuvaj</button>
+      </div>
+    </form>
+  </div>
+</div>
+</div>
+
+<br/>
+
+<div class="container text-center" style="width:60%">
+<div class="card" style="width: auto">
+  <div class="card-header">
+    Dodaj novu specijalizaju
+  </div>
+  <form>
+    <ul class="list-group list-group-flush">
+      <li class="list-group-item">Naziv nove specijalizacije:
+        <input type="text" class="form-control" [(ngModel)]="newSpec" name="spec">
+      </li>
+      <li class="list-group-item"><button class="btn btn-success btn-lg" (click)="createNewSpec()">Dodaj specijalizaciju</button></li>
+    </ul>
+  </form>
+</div>
+</div>
+
+<br/>
+
+<div class="container text-center" style="width:60%">
+<div class="card" style="width: auto">
+  <div class="card-header">
+    Napravi promociju
+  </div>
+  <form>
+    <ul class="list-group list-group-flush">
+      <li class="list-group-item">Opis promocije:
+        <input type="textarea" class="form-control" [(ngModel)]="newPromo" name="spec">
+      </li>
+      <li class="list-group-item"><button class="btn btn-success btn-lg" (click)="createNewPromo()">Kreiraj</button></li>
+    </ul>
+  </form>
+</div>
+</div>

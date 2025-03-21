@@ -1,0 +1,89 @@
+<nav class="navbar navbar-expand-lg navbar-light bg-light fixed-top">
+  <div class="container">
+    <div class="navbar-brand"><h2 style="color:green">GreenMedic</h2></div>
+    <div class="navbar-brand">{{patient.ime}} {{patient.prezime}}</div>
+    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="collapse navbar-collapse" id="navbarResponsive">
+      <ul class="navbar-nav ms-auto">
+        <li class="nav-item">
+          <a class="nav-link"  routerLink="/patientForm">Profil</a>
+        </li>
+        <li class="nav-item active">
+          <a class="nav-link"  routerLink="/patientDoctor">Lekari</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link"  routerLink="/patientCheck">Pregledi</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" routerLink="/patientNotification">Obavestenja</a>
+        </li>
+        <li class="nav-item">
+          <button class="btn btn-outline-dark" (click)="logout()">Odjavi se</button>
+        </li>
+      </ul>
+    </div>
+  </div>
+</nav>
+<br/><br/><br/><br/>
+<div class="container">
+  <button (click)="back()"type="button" class="btn btn-outline-secondary">Odustani</button>
+</div>
+<br/>
+<div class="container text-center" style="width:50%">
+    <div class="card" style="width: auto">
+      <div class="card-header">
+        dr {{doctor.ime}} {{doctor.prezime}}
+      </div>
+      <form>
+        <table class="table tbl">
+          <thead>
+          <tr>
+            <th>Naziv pregleda</th>
+            <th>Cena</th>
+            <th>Trajanje</th>
+          </tr>
+          </thead>
+          <tr *ngFor="let ex of exams" (click)="selectExam(ex)" [ngStyle]="{'background-color': examCheck(ex)}">
+            <td>{{ex.naziv}}</td>
+            <td>{{ex.cena}} rsd</td>
+            <td>{{ex.trajanje}} min</td>
+          </tr>
+        </table>  
+      </form>
+    </div>
+</div>
+
+<br/>
+
+<div class="container text-center">
+ <div class="container" *ngIf="examSelected">
+    <form>
+      <button (click)="form()" type="button" class="btn btn-outline-success">Zakazi putem forme</button>
+      &nbsp;<button (click)="calendar()" type="button" class="btn btn-outline-success">Zakazi putem kalendara</button>
+   </form>
+ </div>
+</div>
+
+<br/>
+
+<div class="container text-center" style="width:40%" *ngIf="formSelected">
+ <div class="card text-white bg-success mb-3" style="width:100%">
+   <div class="card-header">{{exam.naziv}}</div>
+     <div class="card-body">
+      <form>
+        <p class="card-text">
+          Unesite zeljeni datum pregleda: 
+          <input type="text" name="date" [(ngModel)]="date" placeholder="yyyy-mm-dd" class="form-control">
+          <br/>
+          Unesite zeljeno vreme pregleda:
+          <input type="text" name="time" [(ngModel)]="time" placeholder="hh:mm" class="form-control">
+        </p>
+        <button (click)="schedule()" type="button" class="btn btn-outline-light">Zakazi</button>
+      </form>
+     </div>
+  </div>
+</div>
+
+
