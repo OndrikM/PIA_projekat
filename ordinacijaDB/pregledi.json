@@ -1,0 +1,79 @@
+[{
+  "_id": {
+    "$oid": "64f59ad6bfd4c3d42b091fcc"
+  },
+  "cena": 10000,
+  "naziv": "Hirurski zahvat",
+  "trajanje": 120
+},
+{
+  "_id": {
+    "$oid": "64fed917882224864ce78dad"
+  },
+  "cena": 120000,
+  "naziv": "Operacija prosirenih vena",
+  "trajanje": 180
+},
+{
+  "_id": {
+    "$oid": "6500237b141fba9b3a00085a"
+  },
+  "naziv": "Zasivanje rane",
+  "trajanje": 60,
+  "cena": 2000,
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "65002673d5b60db878f046f2"
+  },
+  "naziv": "Oftamoloski pregled",
+  "trajanje": 30,
+  "cena": 1000,
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "650178b15ab4bb1bdbfebc29"
+  },
+  "naziv": "Pregled za skolu",
+  "trajanje": 30,
+  "cena": 500,
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "65018ba7d715f6dc4378af8a"
+  },
+  "naziv": "Opsti pregled",
+  "trajanje": 40,
+  "cena": 2000,
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "650968c2381ce16d557cc8ea"
+  },
+  "naziv": "Sportski pregled",
+  "trajanje": 30,
+  "cena": 1500,
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "650976b9bef4d39ecb3bab19"
+  },
+  "naziv": "Skener abdomena",
+  "trajanje": 120,
+  "cena": 5000,
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "65097917bef4d39ecb3bab81"
+  },
+  "naziv": "Sirenje zenica",
+  "trajanje": 120,
+  "cena": 1500,
+  "__v": 0
+}]

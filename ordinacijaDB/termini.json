@@ -1,0 +1,48 @@
+[{
+  "_id": {
+    "$oid": "65086702381ce16d557cc570"
+  },
+  "pacijent": "pera",
+  "lekar": "milu",
+  "tip": "Pregled za skolu",
+  "datum": "2023-10-01",
+  "vreme": "08:00",
+  "trajanje": 30,
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "6508671a381ce16d557cc57a"
+  },
+  "pacijent": "pera",
+  "lekar": "nata",
+  "tip": "Opsti pregled",
+  "datum": "2023-10-02",
+  "vreme": "09:00",
+  "trajanje": 30,
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "65095a62381ce16d557cc7bd"
+  },
+  "pacijent": "pera",
+  "lekar": "mara",
+  "tip": "Operacija prosirenih vena",
+  "datum": "2023-10-03",
+  "vreme": "10:00",
+  "trajanje": 180,
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "65095fe7381ce16d557cc864"
+  },
+  "pacijent": "",
+  "lekar": "mara",
+  "tip": "Slobodan dan",
+  "datum": "2023-10-05",
+  "vreme": "08:00",
+  "trajanje": 480,
+  "__v": 0
+}]

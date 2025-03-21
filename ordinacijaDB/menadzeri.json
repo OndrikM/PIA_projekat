@@ -1,0 +1,13 @@
+[{
+  "_id": {
+    "$oid": "64f883c85d09f29f47076075"
+  },
+  "ime": "Mila",
+  "prezime": "Milic",
+  "korIme": "mila",
+  "lozinka": "Milamila1!",
+  "adresa": "Takovska 1",
+  "kontaktTel": "065/111 0000",
+  "imejl": "mila123@gmail.com",
+  "slika": "mila.jpg"
+}]

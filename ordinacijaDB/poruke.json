@@ -1,0 +1,46 @@
+[{
+  "_id": {
+    "$oid": "65086aa9381ce16d557cc5e9"
+  },
+  "naslov": "Otkazan pregled",
+  "vlasnik": "pera",
+  "tekst": "Imacete previse pregleda za ovaj datum",
+  "status": "Procitano",
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "6509786bbef4d39ecb3bab50"
+  },
+  "naslov": "Promocija",
+  "vlasnik": "pera",
+  "status": "Neprocitano",
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "6509786bbef4d39ecb3bab52"
+  },
+  "naslov": "Promocija",
+  "vlasnik": "mare",
+  "status": "Neprocitano",
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "6509786bbef4d39ecb3bab54"
+  },
+  "naslov": "Promocija",
+  "vlasnik": "kaca",
+  "status": "Neprocitano",
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "6509786bbef4d39ecb3bab56"
+  },
+  "naslov": "Promocija",
+  "vlasnik": "luka",
+  "status": "Neprocitano",
+  "__v": 0
+}]

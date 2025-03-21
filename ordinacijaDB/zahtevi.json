@@ -1,0 +1,15 @@
+[{
+  "_id": {
+    "$oid": "6509632c381ce16d557cc8a8"
+  },
+  "ime": "Nikola",
+  "prezime": "Nikolic",
+  "korIme": "nidza",
+  "lozinka": "nidza123",
+  "adresa": "Surcinska 132",
+  "kontaktTel": "060/888 9999",
+  "imejl": "nidza123@gmail.com",
+  "status": "Odbijeno",
+  "slika": "default.jpg",
+  "__v": 0
+}]

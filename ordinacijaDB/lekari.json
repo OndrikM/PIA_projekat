@@ -1,0 +1,82 @@
+[{
+  "_id": {
+    "$oid": "64f07a800aabeb0cb7ac46e4"
+  },
+  "korIme": "milu",
+  "lozinka": "Milumilu1!",
+  "ime": "Milutin",
+  "prezime": "Milutinovic",
+  "adresa": "Glavna 2",
+  "kontaktTel": "060/000 1111",
+  "imejl": "milu123@gmail.com",
+  "brLicence": 200002,
+  "specijalizacija": "pedijatrija",
+  "ogranak": "Vracar",
+  "pregledi": [
+    "Opsti pregled",
+    "Pregled za skolu"
+  ],
+  "slika": "milutin.jpg"
+},
+{
+  "_id": {
+    "$oid": "64f07b140aabeb0cb7ac46eb"
+  },
+  "korIme": "nata",
+  "lozinka": "Natanata1!",
+  "ime": "Natalija",
+  "prezime": "Natic",
+  "adresa": "Glavna 3",
+  "kontaktTel": "060/000 2222",
+  "imejl": "nata123@gmail.com",
+  "brLicence": 300003,
+  "specijalizacija": "hirurgija",
+  "ogranak": "Novi Sad",
+  "pregledi": [
+    "Hirurski zahvat",
+    "Zasivanje rane",
+    "Opsti pregled"
+  ],
+  "slika": "natalija.jpg"
+},
+{
+  "_id": {
+    "$oid": "650850de381ce16d557cc4b1"
+  },
+  "ime": "Marija",
+  "prezime": "Maric",
+  "korIme": "mara",
+  "lozinka": "Maramara1!",
+  "adresa": "Takovska 67",
+  "kontaktTel": "060/222 7777",
+  "imejl": "mara123@gmail.com",
+  "brLicence": 100002,
+  "specijalizacija": "kardiologija",
+  "ogranak": "Zemun",
+  "pregledi": [
+    "Operacija prosirenih vena"
+  ],
+  "slika": "marija.jpg"
+},
+{
+  "_id": {
+    "$oid": "6509654e381ce16d557cc8b7"
+  },
+  "ime": "Lea",
+  "prezime": "Leic",
+  "korIme": "lea",
+  "lozinka": "Lealea1!",
+  "adresa": "Jurija Gagarina 1",
+  "kontaktTel": "069/000 4444",
+  "imejl": "lea123@gmail.com",
+  "brLicence": 555478,
+  "specijalizacija": "oftamologija",
+  "ogranak": "Novi Beograd",
+  "pregledi": [
+    "Oftamoloski pregled",
+    "Opsti pregled",
+    "Odredjivanje dioptrije"
+  ],
+  "slika": "1695114513684lea.jpg",
+  "__v": 0
+}]

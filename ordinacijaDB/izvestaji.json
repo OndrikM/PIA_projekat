@@ -1,0 +1,14 @@
+[{
+  "_id": {
+    "$oid": "64f6e4b05d09f29f4707603e"
+  },
+  "pacijent": "pera",
+  "lekar": "mara",
+  "datum": "2023-07-01",
+  "vreme": "10:00",
+  "razlog": "razlog 1",
+  "dijagnoza": "dijagnoza 1",
+  "terapija": "terapija 1",
+  "kontrola": "2023-07-10",
+  "specijalizacija": "kardiologija"
+}]

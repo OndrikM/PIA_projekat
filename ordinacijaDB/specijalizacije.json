@@ -1,0 +1,55 @@
+[{
+  "_id": {
+    "$oid": "64fb301c5d09f29f47076084"
+  },
+  "vrsta": "pedijatrija",
+  "pregledi": [
+    "Opsti pregled",
+    "Pregled za skolu"
+  ]
+},
+{
+  "_id": {
+    "$oid": "64fb30d25d09f29f47076085"
+  },
+  "vrsta": "kardiologija",
+  "pregledi": [
+    "Operacija prosirenih vena",
+    "Opsti pregled",
+    "Sportski pregled"
+  ]
+},
+{
+  "_id": {
+    "$oid": "65001fed3e232996188d4819"
+  },
+  "vrsta": "hirurgija",
+  "pregledi": [
+    "Hirurski zahvat",
+    "Zasivanje rane",
+    "Opsti pregled"
+  ]
+},
+{
+  "_id": {
+    "$oid": "65002661d5b60db878f046ec"
+  },
+  "vrsta": "oftamologija",
+  "pregledi": [
+    "Oftamoloski pregled",
+    "Opsti pregled",
+    "Odredjivanje dioptrije",
+    "Sirenje zenica"
+  ],
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "650976a1bef4d39ecb3bab12"
+  },
+  "vrsta": "radiologija",
+  "pregledi": [
+    "Skener abdomena"
+  ],
+  "__v": 0
+}]

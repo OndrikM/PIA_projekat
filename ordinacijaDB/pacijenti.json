@@ -1,0 +1,53 @@
+[{
+  "_id": {
+    "$oid": "646675fe7e5a59d6238d7c73"
+  },
+  "ime": "Petar",
+  "prezime": "Petrovic",
+  "korIme": "pera",
+  "lozinka": "pera123",
+  "adresa": "Ulica mira 100",
+  "kontaktTel": "065/000 4545",
+  "imejl": "pera123@gmail.com",
+  "slika": "petar.jpg"
+},
+{
+  "_id": {
+    "$oid": "646675fe7e5a59d6238d7c75"
+  },
+  "ime": "Marko",
+  "prezime": "Markovic",
+  "korIme": "mare",
+  "lozinka": "Maremare1!",
+  "adresa": "Bulevar kralja Aleksandra 14",
+  "kontaktTel": "065/111 1111",
+  "imejl": "mare123@gmail.com",
+  "slika": "marko.jpg"
+},
+{
+  "_id": {
+    "$oid": "646675fe7e5a59d6238d7c76"
+  },
+  "ime": "Luka",
+  "prezime": "Lukic",
+  "korIme": "luka",
+  "lozinka": "Lukaluka1!",
+  "adresa": "Bulevar kralja Aleksandra 15",
+  "kontaktTel": "065/111 2222",
+  "imejl": "luka123@gmail.com",
+  "slika": "luka.jpg"
+},
+{
+  "_id": {
+    "$oid": "650962cb381ce16d557cc897"
+  },
+  "ime": "Katarina",
+  "prezime": "Katic",
+  "korIme": "kaca",
+  "lozinka": "Kacakaca1!",
+  "adresa": "Kneza Milana 23",
+  "kontaktTel": "062/222 3333",
+  "imejl": "kaca123@gmail.com",
+  "slika": "1695133788563300x300-061-e1340955308953.jpg",
+  "__v": 0
+}]
